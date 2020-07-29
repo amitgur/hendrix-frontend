@@ -1,53 +1,39 @@
 <template>
   <q-layout view="hHh lpR fFf" style="background-color: #edf1f5;">
-    <q-header elevated class="bg-primary text-white" v-show="!hideHeader">
+    <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="text-left">
-          <q-btn flat size="xl" to="/adminHome" label="רכישה מרוכזת - ניהול" />
+          <q-btn flat size="xl" to="/adminHome" label="Admin" />
           <q-btn
             outline
-            v-show="signIn && name === 'עמית גור'"
+            v-show="signIn"
             to="/adminSignUp"
             class="q-mx-sm"
-            label="יצירת מנהל"
+            label="Create admin"
           />
           <q-btn
             outline
-            v-show="signIn && name === 'עמית גור'"
-            to="/adminProductSets"
+            v-show="signIn"
+            to="/adminLogger"
             class="q-mx-sm"
-            label="רשומות רכישה"
+            label="Logger"
           />
           <q-btn
             outline
-            v-show="signIn && name === 'עמית גור'"
-            to="/adminAddProductSet"
+            v-show="!signIn"
+            to="/adminLogin"
             class="q-mx-sm"
-            label="הוספת רשומה"
+            label="Sign in"
           />
         </q-toolbar-title>
         <q-btn v-show="signIn" :label="name" />
-        <q-btn
-          outline
-          v-show="signIn"
-          @click="hideHeader = !hideHeader"
-          class="q-mx-sm"
-          label="הדפסה"
-        />
-        <q-btn outline v-show="signIn" @click="signOut" label="יציאה" />
+        <q-btn outline v-show="signIn" @click="signOut" label="Sign out" />
       </q-toolbar>
     </q-header>
 
     <q-page-container>
       <router-view />
     </q-page-container>
-    <q-btn
-      class="fixed-top-right q-ma-sm"
-      outline
-      v-show="hideHeader"
-      @click="hideHeader = !hideHeader"
-      label="חזור"
-    />
   </q-layout>
 </template>
 

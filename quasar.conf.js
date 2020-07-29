@@ -68,7 +68,7 @@ module.exports = function(ctx) {
       https: false,
       proxy: {
         // proxy all requests starting with /api
-        "/api-v1.0": {
+        "/apiV1": {
           target: "http://localhost:8989",
           changeOrigin: true
         }

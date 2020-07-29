@@ -2,8 +2,8 @@
   <q-layout view="hHh lpR fFf" style="background-color: #edf1f5;">
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title class="text-center">
-          <q-btn flat size="xl" to="homepage" label="רכישה מרוכזת לקהילה מנגנת" />
+        <q-toolbar-title>
+          <q-btn flat size="xl" label="Brand" />
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

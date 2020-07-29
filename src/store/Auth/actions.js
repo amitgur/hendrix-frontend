@@ -1,6 +1,6 @@
 export async function signOut({ commit }) {
   this._vm.$axios
-    .post("/api/sign_out")
+    .post("/apiV1/sign_out")
     .then(() => {
       commit("setName", "");
       commit("setSignIn", false);
@@ -14,7 +14,7 @@ export async function checkSignIn(context) {
   if (!context.getters["getSignIn"]) {
     // call server
     try {
-      const response = await this._vm.$axios.get("/api/get_user");
+      const response = await this._vm.$axios.get("/apiV1/get_user");
       context.commit("setName", response.data.name);
       context.commit("setSignIn", true);
       return true;

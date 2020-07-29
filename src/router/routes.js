@@ -20,6 +20,12 @@ const routes = [
     component: () => import("layouts/AdminLayout.vue"),
     children: [{ path: "", component: () => import("pages/admin/SignUp.vue") }]
   },
+  {
+    path: "/adminLogger",
+    meta: { requiresAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

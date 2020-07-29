@@ -1,52 +1,47 @@
 <template>
-  <q-page
-    class="bg-secondary window-height window-width row justify-center items-center"
-  >
+  <q-page class="bg-grey-2 column justify-center items-center">
     <div class="column" v-if="!isSignIn">
-      <div class="row">
-        <h5 class="text-h5 text-primary q-my-md">כניסת ניהול</h5>
-      </div>
-      <div class="row">
-        <q-card square bordered class="q-pa-lg shadow-1">
-          <q-card-section>
-            <q-form class="q-gutter-md">
-              <q-input
-                square
-                filled
-                clearable
-                v-model="username"
-                type="text"
-                label="שם משתמש או מייל"
-              />
-              <q-input
-                square
-                filled
-                clearable
-                v-model="password"
-                type="password"
-                label="סיסמא"
-              />
-            </q-form>
-          </q-card-section>
-          <q-card-actions class="q-px-md">
-            <q-btn
-              unelevated
-              color="light-green-7"
-              size="lg"
-              class="full-width"
-              label="כניסה"
-              @click="signIn"
+      <h5 class="text-h5 text-primary q-my-md">Admin sign in</h5>
+      <q-card square bordered class="q-pa-lg shadow-1">
+        <q-card-section>
+          <q-form class="q-gutter-md">
+            <q-input
+              square
+              filled
+              clearable
+              v-model="username"
+              type="text"
+              label="Email or Username"
             />
-          </q-card-actions>
-        </q-card>
-      </div>
+            <q-input
+              square
+              filled
+              clearable
+              v-model="password"
+              type="password"
+              label="Password"
+            />
+          </q-form>
+        </q-card-section>
+        <q-card-actions class="q-px-md">
+          <q-btn
+            unelevated
+            color="light-green-7"
+            size="lg"
+            class="full-width"
+            label="Enter"
+            @click="signIn"
+          />
+        </q-card-actions>
+      </q-card>
+      <q-btn to="/adminSignUp">Don't have an account? sign up</q-btn>
     </div>
     <div class="column" v-else>
       <q-btn
         color="primary"
         size="xl"
         @click="$router.push('/adminHome')"
-        label="לחץ לכניסה"
+        label="Enter Admin Panel"
       />
     </div>
   </q-page>
@@ -65,7 +60,7 @@ export default {
   methods: {
     errorHandler(e) {
       this.$q.dialog({
-        title: "תקלה",
+        title: "Error",
         message: extractResponseMessage(e)
       });
       console.error(JSON.stringify(e, null, 2));
@@ -76,7 +71,7 @@ export default {
         password: this.password
       };
       this.$axios
-        .post("api/sign_in", user)
+        .post("/apiV1/sign_in", user)
         .then(response => {
           // route to homepage
           this.$store.commit("Auth/setSignIn", true);
@@ -84,12 +79,10 @@ export default {
           this.$router.push({ path: "/adminHome" });
         })
         .catch(error => {
-          this.$axios.get("api/get_message").then(response => {
-            const msg = response.data.message
-              ? response.data.message
-              : "אירעה תקלה";
+          this.$axios.get("/apiV1/get_message").then(response => {
+            const msg = response.data.message ? response.data.message : "Error";
             this.$q.dialog({
-              title: "תקלה",
+              title: "Error",
               message: msg
             });
           });

@@ -1,9 +1,8 @@
 {
-  "name": "bandpad-payment",
-  "version": "0.0.2",
-  "description": "Payment for BandPad",
-  "productName": "BandPad Payment",
-  "author": "Amit Gur",
+  "name": "hendrix-frontend",
+  "version": "0.0.1",
+  "description": "Hendrix front project - vue and quasar",
+ "author": "Amit Gur",
   "private": true,
   "scripts": {
     "start": "quasar dev"

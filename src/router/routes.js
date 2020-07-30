@@ -26,6 +26,10 @@ const routes = [
     component: () => import("layouts/AdminLayout.vue"),
     children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
   },
+  {
+    path: "/:compositionId",
+    component: () => import("pages/Composition.vue")
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

@@ -40,7 +40,8 @@ module.exports = function(ctx) {
     build: {
       vueRouterMode: "hash", // available values: 'hash', 'history'
       env: {
-        DEVELOP: ctx.dev
+        DEVELOP: ctx.dev,
+        REST_SERVER: "https://admin.shiru.me"
       },
 
       // transpile: false,
@@ -50,7 +51,7 @@ module.exports = function(ctx) {
       // Applies only if "transpile" is set to true.
       // transpileDependencies: [],
 
-      // rtl: true, // https://quasar.dev/options/rtl-support
+      rtl: true, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       // showProgress: false,
       // gzip: true,

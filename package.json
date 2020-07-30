@@ -2,7 +2,7 @@
   "name": "hendrix-frontend",
   "version": "0.0.1",
   "description": "Hendrix front project - vue and quasar",
- "author": "Amit Gur",
+  "author": "Amit Gur",
   "private": true,
   "scripts": {
     "start": "quasar dev"
@@ -11,7 +11,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
-    "quasar": "^1.12.12",
+    "quasar": "^1.12.13",
     "validator": "^13.1.1"
   },
   "devDependencies": {

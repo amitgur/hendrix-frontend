@@ -1,12 +1,18 @@
 <template>
-  <q-layout view="hHh lpR fFf" style="background-color: #edf1f5;">
-    <q-header elevated class="bg-primary text-white">
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="left = !left" />
+
         <q-toolbar-title>
-          <q-btn flat size="xl" label="Brand" />
+          אנתולוגיה
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
+
+    <q-drawer show-if-above v-model="left" side="left" bordered>
+      <!-- drawer content -->
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -15,11 +21,11 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-      };
-    },
-    mounted() {},
-  };
+export default {
+  data() {
+    return {
+      left: false
+    };
+  }
+};
 </script>

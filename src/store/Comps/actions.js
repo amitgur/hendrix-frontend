@@ -4,7 +4,6 @@ export async function getAllComps(context) {
     try {
       const response = await this._vm.$axios.get("https://api.shiru.me/comps");
       context.commit("setComps", response.data);
-      console.log(response);
     } catch {
       return false;
     }

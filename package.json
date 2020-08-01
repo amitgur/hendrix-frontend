@@ -11,8 +11,10 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
+    "markdown-it": "^11.0.0",
     "quasar": "^1.12.13",
-    "validator": "^13.1.1"
+    "validator": "^13.1.1",
+    "vue-vimeo-player": "^0.1.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.5",

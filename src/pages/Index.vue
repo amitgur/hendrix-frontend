@@ -7,11 +7,12 @@
         toggle-text-color="primary"
         :options="[
           { label: 'כל התקופות', value: 0 },
-          { label: 'תקופת ימי הביניים', value: 1 },
-          { label: 'תקופת הבארוק', value: 2 },
-          { label: 'התקופה הקלאסית', value: 3 },
-          { label: 'התקופה הרומנטית', value: 4 },
-          { label: 'תקופת המאה העשרים', value: 5 }
+          { label: 'ימי הביינים', value: 1 },
+          { label: 'רנסאנס', value: 2 },
+          { label: 'בארוק', value: 3 },
+          { label: 'קלאסי', value: 4 },
+          { label: 'רומנטי', value: 5 },
+          { label: 'מודרני', value: 5 }
         ]"
       />
     </div>

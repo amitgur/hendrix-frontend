@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg-grey-2 column justify-center items-center">
     <div class="column" v-if="!isSignIn">
-      <h5 class="text-h5 text-primary q-my-md">Admin sign in</h5>
+      <h5 class="text-h5 text-primary q-my-md">כניסת מנהל</h5>
       <q-card square bordered class="q-pa-lg shadow-1">
         <q-card-section>
           <q-form class="q-gutter-md">
@@ -11,7 +11,7 @@
               clearable
               v-model="username"
               type="text"
-              label="Email or Username"
+              label="שם משתמש"
             />
             <q-input
               square
@@ -19,7 +19,7 @@
               clearable
               v-model="password"
               type="password"
-              label="Password"
+              label="סיסמא"
             />
           </q-form>
         </q-card-section>
@@ -29,12 +29,12 @@
             color="light-green-7"
             size="lg"
             class="full-width"
-            label="Enter"
+            label="כניסה"
             @click="signIn"
           />
         </q-card-actions>
       </q-card>
-      <q-btn to="/adminSignUp">Don't have an account? sign up</q-btn>
+      <q-btn to="/adminSignUp">הרשמת מנהל חדש</q-btn>
     </div>
     <div class="column" v-else>
       <q-btn

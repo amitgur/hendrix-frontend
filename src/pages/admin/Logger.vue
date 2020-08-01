@@ -1,24 +1,26 @@
 <template>
   <q-page class="column justify-start items-center q-mx-xl">
-    <h5>Logger docs for hendrix</h5>
+    <h5>לוג אתר האנתולוגיה</h5>
     <div class="q-pa-md full-width">
-      <q-markup-table flat>
+      <q-markup-table flat dir="ltr">
         <thead>
           <tr>
-            <th class="text-left" style="white-space:nowrap;width: 1%">Time</th>
-            <th class="text-left" style="white-space:nowrap;width: 1%">
+            <th class="text-right" style="white-space:nowrap;width: 1%">
+              Time
+            </th>
+            <th class="text-right" style="white-space:nowrap;width: 1%">
               Level
             </th>
-            <th class="text-left">Message</th>
+            <th class="text-right">Message</th>
           </tr>
           <tr v-for="item in file" :key="item.timestamp">
-            <td class="text-left">
+            <td class="text-right">
               {{ item.timestamp }}
             </td>
-            <td class="text-left">
+            <td class="text-right">
               {{ item.level }}
             </td>
-            <td class="text-left">{{ item.message }}</td>
+            <td class="text-right">{{ item.message }}</td>
           </tr>
         </thead>
       </q-markup-table>

@@ -4,30 +4,22 @@
       <q-toolbar>
         <q-toolbar-title class="text-left">
           <!-- admin -->
-          <q-btn flat size="xl" to="/adminHome" label="אנתולוגיה ניהול" />
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="מנהל">
+          <q-btn
+            flat
+            size="xl"
+            to="/teacherHome"
+            label="אנתולוגיה ניהול מורים"
+          />
+          <q-btn outline v-show="signIn" class="q-mx-sm" label="תלמידים">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup to="/adminSignUp">
-                  <q-item-section>יצירת מנהל</q-item-section>
-                </q-item>
-                <q-item clickable v-close-popup to="/createSchool">
-                  <q-item-section>יצירת בית ספר</q-item-section>
+                  <q-item-section>רשימת תלמידים</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
           </q-btn>
 
-          <!-- log -->
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="לוג">
-            <q-menu>
-              <q-list style="min-width: 100px">
-                <q-item clickable v-close-popup to="/adminLogger">
-                  <q-item-section>לוג מנהל</q-item-section>
-                </q-item>
-              </q-list>
-            </q-menu>
-          </q-btn>
           <q-btn
             outline
             v-show="!signIn"

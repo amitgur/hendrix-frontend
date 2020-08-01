@@ -1,6 +1,6 @@
 <template>
   <q-page class="column justify-start items-center">
-    <h5>פאנל ניהול</h5>
+    <h5>פאנל מורים</h5>
   </q-page>
 </template>
 

@@ -36,7 +36,7 @@ export default async function({ store }) {
       if (signIn) {
         next();
       } else {
-        next("/adminLogin");
+        next("/teacherLogin");
       }
     } else {
       // user was init

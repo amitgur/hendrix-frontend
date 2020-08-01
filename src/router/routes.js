@@ -1,8 +1,31 @@
 const routes = [
   {
-    path: "/",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/Index.vue") }]
+    path: "teacherLogin",
+    component: () => import("layouts/TeacherLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/teachers/TeacherLogin.vue") }
+    ]
+  },
+  {
+    path: "/teacherHome",
+    meta: { requiresAuth: true },
+    component: () => import("layouts/TeacherLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/teachers/TeacherHome.vue") }
+    ]
+  },
+  {
+    path: "/teacherLogin",
+    component: () => import("layouts/TeacherLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/teachers/AddTeacher.vue") }
+    ]
+  },
+  {
+    path: "/adminLogger",
+    meta: { requiresAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
   },
   {
     path: "/adminLogin",
@@ -27,8 +50,17 @@ const routes = [
     children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
   },
   {
+    path: "/menu",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/Menu.vue") }]
+  },
+  {
     path: "/:compositionId",
     component: () => import("pages/Composition.vue")
+  },
+  {
+    path: "/",
+    component: () => import("pages/Home.vue")
   },
   // Always leave this as last one,
   // but you can also remove it

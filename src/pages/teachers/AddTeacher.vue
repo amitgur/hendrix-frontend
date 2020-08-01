@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg-grey-2 column justify-center items-center">
     <div>
-      <h5 class="text-h5 text-primary q-my-md">הרשמת מנהל</h5>
+      <h5 class="text-h5 text-primary q-my-md">הוספת מורה</h5>
 
       <q-card square bordered class="q-pa-lg shadow-1">
         <q-card-section>
@@ -11,8 +11,8 @@
               filled
               clearable
               v-model="username"
-              type="text"
-              label="שם משתמש"
+              type="email"
+              label="מייל"
             />
             <q-input
               square
@@ -29,13 +29,6 @@
               v-model="password"
               type="password"
               label="סיסמא"
-            />
-            <q-input
-              square
-              filled
-              v-model="magicWord"
-              type="text"
-              label="מילת קסם"
             />
           </q-form>
         </q-card-section>
@@ -55,14 +48,13 @@
 </template>
 
 <script>
-import extractResponseMessage from "../../assets/js/extractResponseMessage";
+import extractResponseMessage from "assets/js/extractResponseMessage";
 export default {
   name: "Login",
   data() {
     return {
       username: "",
       password: "",
-      magicWord: "",
       name: ""
     };
   },
@@ -78,16 +70,15 @@ export default {
       const user = {
         username: this.username,
         password: this.password,
-        magicWord: this.magicWord,
         name: this.name
       };
       this.$axios
-        .post("/apiV1/sign_up", user)
+        .post("/apiV1/teacher_sign_up", user)
         .then(response => {
           // route to login
           this.$q.dialog({
-            title: "Message",
-            message: "New admin user was created successfully"
+            title: "הודעה",
+            message: "הרשמת מורה עברה בהצלחה"
           });
           this.$router.push("adminLogin");
         })

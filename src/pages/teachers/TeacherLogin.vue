@@ -1,8 +1,7 @@
 <template>
   <q-page class="bg-grey-2 column justify-center items-center">
-    <div>
-      <h5 class="text-h5 text-primary q-my-md">הרשמת מנהל</h5>
-
+    <div class="column" v-if="!isSignIn">
+      <h5 class="text-h5 text-primary q-my-md">כניסת מנהל</h5>
       <q-card square bordered class="q-pa-lg shadow-1">
         <q-card-section>
           <q-form class="q-gutter-md">
@@ -12,15 +11,7 @@
               clearable
               v-model="username"
               type="text"
-              label="שם משתמש"
-            />
-            <q-input
-              square
-              filled
-              clearable
-              v-model="name"
-              type="text"
-              label="שם מלא"
+              label="מייל"
             />
             <q-input
               square
@@ -30,13 +21,6 @@
               type="password"
               label="סיסמא"
             />
-            <q-input
-              square
-              filled
-              v-model="magicWord"
-              type="text"
-              label="מילת קסם"
-            />
           </q-form>
         </q-card-section>
         <q-card-actions class="q-px-md">
@@ -45,25 +29,32 @@
             color="light-green-7"
             size="lg"
             class="full-width"
-            label="הרשמה"
-            @click="signUp"
+            label="כניסה"
+            @click="signIn"
           />
         </q-card-actions>
       </q-card>
+      <q-btn to="/adminSignUp">הרשמת מנהל חדש</q-btn>
+    </div>
+    <div class="column" v-else>
+      <q-btn
+        color="primary"
+        size="xl"
+        @click="$router.push('/teacherHome')"
+        label="כניסה לניהול מורים"
+      />
     </div>
   </q-page>
 </template>
 
 <script>
-import extractResponseMessage from "../../assets/js/extractResponseMessage";
+import extractResponseMessage from "assets/js/extractResponseMessage";
 export default {
   name: "Login",
   data() {
     return {
       username: "",
-      password: "",
-      magicWord: "",
-      name: ""
+      password: ""
     };
   },
   methods: {
@@ -72,28 +63,35 @@ export default {
         title: "Error",
         message: extractResponseMessage(e)
       });
-      console.error(e);
+      console.error(JSON.stringify(e, null, 2));
     },
-    signUp() {
+    signIn() {
       const user = {
         username: this.username,
-        password: this.password,
-        magicWord: this.magicWord,
-        name: this.name
+        password: this.password
       };
       this.$axios
-        .post("/apiV1/sign_up", user)
+        .post("/apiV1/sign_in", user)
         .then(response => {
-          // route to login
-          this.$q.dialog({
-            title: "Message",
-            message: "New admin user was created successfully"
-          });
-          this.$router.push("adminLogin");
+          // route to homepage
+          this.$store.commit("Auth/setSignIn", true);
+          this.$store.commit("Auth/setName", response.data.name);
+          this.$router.push({ path: "/adminHome" });
         })
         .catch(error => {
-          this.errorHandler(error);
+          this.$axios.get("/apiV1/get_message").then(response => {
+            const msg = response.data.message ? response.data.message : "Error";
+            this.$q.dialog({
+              title: "Error",
+              message: msg
+            });
+          });
         });
+    }
+  },
+  computed: {
+    isSignIn() {
+      return this.$store.getters["Auth/getSignIn"];
     }
   },
   created() {
@@ -102,3 +100,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.q-card {
+  width: 360px;
+}
+</style>

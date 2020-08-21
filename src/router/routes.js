@@ -1,13 +1,23 @@
 const routes = [
+  /**
+   * Teacher routes
+   */
   {
-    path: "teacherLogin",
+    path: "/teachersSignUp",
+    component: () => import("layouts/TeacherLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/teachers/AddTeacher.vue") }
+    ]
+  },
+  {
+    path: "teachersLogin",
     component: () => import("layouts/TeacherLayout.vue"),
     children: [
       { path: "", component: () => import("pages/teachers/TeacherLogin.vue") }
     ]
   },
   {
-    path: "/teacherHome",
+    path: "/teachersHome",
     meta: { requiresAuth: true },
     component: () => import("layouts/TeacherLayout.vue"),
     children: [
@@ -15,15 +25,27 @@ const routes = [
     ]
   },
   {
-    path: "/teacherLogin",
+    path: "/teachersLogin",
     component: () => import("layouts/TeacherLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/teachers/AddTeacher.vue") }
+      { path: "", component: () => import("pages/teachers/TeacherLogin.vue") }
     ]
   },
   {
+    path: "/teachersStudentList",
+    component: () => import("layouts/TeacherLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/teachers/StudentsList.vue") }
+    ]
+  },
+
+  /**
+   * Admin routes
+   */
+
+  {
     path: "/adminLogger",
-    meta: { requiresAuth: true },
+    meta: { requiresAdminAuth: true },
     component: () => import("layouts/AdminLayout.vue"),
     children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
   },
@@ -34,7 +56,7 @@ const routes = [
   },
   {
     path: "/adminHome",
-    meta: { requiresAuth: true },
+    meta: { requiresAdminAuth: true },
     component: () => import("layouts/AdminLayout.vue"),
     children: [{ path: "", component: () => import("pages/admin/Home.vue") }]
   },
@@ -45,10 +67,63 @@ const routes = [
   },
   {
     path: "/adminLogger",
-    meta: { requiresAuth: true },
+    meta: { requiresAdminAuth: true },
     component: () => import("layouts/AdminLayout.vue"),
     children: [{ path: "", component: () => import("pages/admin/Logger.vue") }]
   },
+
+  // schools
+
+  {
+    path: "/adminCreateSchool",
+    meta: { requiresAdminAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/admin/school/AddSchool.vue") }
+    ]
+  },
+  {
+    path: "/adminListSchools",
+    meta: { requiresAdminAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/admin/school/ListSchools.vue")
+      }
+    ]
+  },
+
+  // school accounts
+  {
+    path: "/adminCreateSchoolAccount",
+    meta: { requiresAdminAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () =>
+          import("pages/admin/schoolAccount/AddSchoolAccount.vue")
+      }
+    ]
+  },
+  {
+    path: "/adminListSchoolAccounts",
+    meta: { requiresAdminAuth: true },
+    component: () => import("layouts/AdminLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () =>
+          import("pages/admin/schoolAccount/ListSchoolAccounts.vue")
+      }
+    ]
+  },
+
+  /**
+   * Site links
+   */
+
   {
     path: "/menu",
     component: () => import("layouts/MainLayout.vue"),

@@ -4,7 +4,7 @@
   >
     <div class="column">
       <div class="row">
-        <h5 class="text-h5 text-primary q-my-md">יצירת רשומת בית ספר</h5>
+        <h5 class="text-h5 text-primary q-my-md">יצירת בית ספר</h5>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
@@ -18,15 +18,16 @@
                 type="text"
                 label="בית ספר"
               />
-              <q-select
+            </q-form>
+            <q-form class="q-gutter-md">
+              <q-input
+                square
                 filled
-                multiple
-                style="padding-bottom: 32px"
-                v-model="teachers"
-                :options="allteachers"
-                hint="בחר מורים"
-              >
-              </q-select>
+                clearable
+                v-model="city"
+                type="text"
+                label="עיר"
+              />
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-md">
@@ -36,7 +37,7 @@
               size="lg"
               class="full-width"
               label="שלח"
-              @click="saveSchoolAccount"
+              @click="saveSchool"
             />
           </q-card-actions>
         </q-card>
@@ -46,13 +47,13 @@
 </template>
 
 <script>
-import extractResponseMessage from "../../assets/js/extractResponseMessage";
+import extractResponseMessage from "assets/js/extractResponseMessage";
 
 export default {
   name: "Login",
   data() {
     return {
-      allTeachers: [],
+      city: "",
       schoolName: ""
     };
   },
@@ -64,38 +65,25 @@ export default {
       });
       console.error(e);
     },
-    saveSchoolAccount() {
-      const schoolAccount = {
-        products: this.products.map(p => {
-          return { url: p.val, label: p.label };
-        }),
-        expireDate: this.expireDate,
+    saveSchool() {
+      const school = {
         city: this.city,
         schoolName: this.schoolName
       };
       this.$axios
-        .post("/api/create_school_account", schoolAccount)
+        .post("/apiV1/create_school", school)
         .then(response => {
           // route to login
           this.$q.dialog({
             title: "הודעה",
-            message: "רשומה נוצרה בהצלחה"
+            message: "בית ספר נוצר בהצלחה"
           });
         })
         .catch(error => {
           this.errorHandler(error);
         });
+      this.$router.push("adminListSchools");
     }
-  },
-  created() {
-    this.$axios
-      .get("/api/get_all_teachers")
-      .then(response => {
-        this.allTeachers = response.data.map(p => {
-          return { val: p._id, label: p.teacherName };
-        });
-      })
-      .catch(this.errorHandler);
   }
 };
 </script>

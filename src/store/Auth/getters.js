@@ -5,3 +5,7 @@ export function getSignIn(state) {
 export function getName(state) {
   return state.name;
 }
+
+export function getProfile(state) {
+  return state.profile;
+}

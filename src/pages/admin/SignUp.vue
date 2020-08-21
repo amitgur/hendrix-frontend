@@ -79,6 +79,7 @@ export default {
         username: this.username,
         password: this.password,
         magicWord: this.magicWord,
+        profile: "admin",
         name: this.name
       };
       this.$axios

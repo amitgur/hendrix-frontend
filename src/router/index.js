@@ -27,6 +27,7 @@ export default async function({ store }) {
     base: process.env.VUE_ROUTER_BASE
   });
 
+  // check authentication
   Router.beforeEach(async (to, from, next) => {
     if (to.matched.some(route => route.meta.requiresAuth)) {
       // init user for the first time
@@ -36,7 +37,25 @@ export default async function({ store }) {
       if (signIn) {
         next();
       } else {
-        next("/teacherLogin");
+        next("/teachersLogin");
+      }
+    } else {
+      // user was init
+      next();
+    }
+  });
+
+  // check admin authentication
+  Router.beforeEach(async (to, from, next) => {
+    if (to.matched.some(route => route.meta.requiresAdminAuth)) {
+      // init user for the first time
+      const signIn = await store.dispatch("Auth/checkSignIn");
+
+      // check for admin
+      if (signIn && store.getters["Auth/getProfile"] === "admin") {
+        next();
+      } else {
+        next("/teachersLogin");
       }
     } else {
       // user was init

@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg-grey-2 column justify-center items-center">
     <div class="column" v-if="!isSignIn">
-      <h5 class="text-h5 text-primary q-my-md">כניסת מנהל</h5>
+      <h5 class="text-h5 text-primary q-my-md">כניסת מורים</h5>
       <q-card square bordered class="q-pa-lg shadow-1">
         <q-card-section>
           <q-form class="q-gutter-md">
@@ -34,13 +34,13 @@
           />
         </q-card-actions>
       </q-card>
-      <q-btn to="/adminSignUp">הרשמת מנהל חדש</q-btn>
+      <q-btn to="/teachersSignUp">הרשמת מורה חדש</q-btn>
     </div>
     <div class="column" v-else>
       <q-btn
         color="primary"
         size="xl"
-        @click="$router.push('/teacherHome')"
+        @click="$router.push('/teachersHome')"
         label="כניסה לניהול מורים"
       />
     </div>
@@ -76,7 +76,7 @@ export default {
           // route to homepage
           this.$store.commit("Auth/setSignIn", true);
           this.$store.commit("Auth/setName", response.data.name);
-          this.$router.push({ path: "/adminHome" });
+          this.$router.push({ path: "/teachersHome" });
         })
         .catch(error => {
           this.$axios.get("/apiV1/get_message").then(response => {

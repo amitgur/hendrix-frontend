@@ -11,8 +11,36 @@
                 <q-item clickable v-close-popup to="/adminSignUp">
                   <q-item-section>יצירת מנהל</q-item-section>
                 </q-item>
-                <q-item clickable v-close-popup to="/createSchool">
+                <q-item clickable v-close-popup to="/adminCreateSchool">
                   <q-item-section>יצירת בית ספר</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+
+          <!-- school -->
+          <q-btn outline v-show="signIn" class="q-mx-sm" label="בית ספר">
+            <q-menu>
+              <q-list style="min-width: 100px">
+                <q-item clickable v-close-popup to="/adminCreateSchool">
+                  <q-item-section>יצירת בית ספר</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup to="/adminListSchools">
+                  <q-item-section>רשימת בתי ספר</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+
+          <!-- school account-->
+          <q-btn outline v-show="signIn" class="q-mx-sm" label="רשומות כניסה">
+            <q-menu>
+              <q-list style="min-width: 100px">
+                <q-item clickable v-close-popup to="/adminCreateSchoolAccount">
+                  <q-item-section>יצירת רשומה</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup to="/adminListSchoolAccounts">
+                  <q-item-section>כל הרשומות</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>

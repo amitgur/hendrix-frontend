@@ -13,7 +13,7 @@
           <q-btn outline v-show="signIn" class="q-mx-sm" label="תלמידים">
             <q-menu>
               <q-list style="min-width: 100px">
-                <q-item clickable v-close-popup to="/adminSignUp">
+                <q-item clickable v-close-popup to="/teachersStudentList">
                   <q-item-section>רשימת תלמידים</q-item-section>
                 </q-item>
               </q-list>

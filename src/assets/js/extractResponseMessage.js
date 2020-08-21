@@ -8,6 +8,13 @@ export default function extractResponseMessage(e) {
     message = e.response.data.message;
   } else if (
     e.hasOwnProperty("response") &&
+    e.response.hasOwnProperty("data") &&
+    e.response.data.hasOwnProperty("error") &&
+    e.response.data.error.hasOwnProperty("message")
+  ) {
+    message = e.response.data.error.message;
+  } else if (
+    e.hasOwnProperty("response") &&
     e.response.hasOwnProperty("status")
   ) {
     if (e.response.status === 404) {

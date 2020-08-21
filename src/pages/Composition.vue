@@ -242,6 +242,10 @@ export default {
       this.$route.params.compositionId
     );
 
+    if (!this.comp) {
+      return this.$router.push("/pageNotFound");
+    }
+
     this.tabsData = this.convertJsonToArray(this.comp.tabsData);
     this.currentTab = this.tabsData[0].name;
     this.partsData = this.convertJsonToArray(this.comp.partsData);

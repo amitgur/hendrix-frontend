@@ -5,7 +5,7 @@
         <q-toolbar-title class="text-left">
           <!-- admin -->
           <q-btn flat size="xl" to="/adminHome" label="אנתולוגיה ניהול" />
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="מנהל">
+          <q-btn v-show="signIn" class="q-mx-sm" label="מנהל">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup to="/adminSignUp">
@@ -19,7 +19,7 @@
           </q-btn>
 
           <!-- school -->
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="בית ספר">
+          <q-btn v-show="signIn" class="q-mx-sm" label="בית ספר">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup to="/adminCreateSchool">
@@ -33,7 +33,7 @@
           </q-btn>
 
           <!-- school account-->
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="רשומות כניסה">
+          <q-btn v-show="signIn" class="q-mx-sm" label="רשומות כניסה">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup to="/adminCreateSchoolAccount">
@@ -47,7 +47,7 @@
           </q-btn>
 
           <!-- log -->
-          <q-btn outline v-show="signIn" class="q-mx-sm" label="לוג">
+          <q-btn v-show="signIn" class="q-mx-sm" label="לוג">
             <q-menu>
               <q-list style="min-width: 100px">
                 <q-item clickable v-close-popup to="/adminLogger">

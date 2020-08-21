@@ -103,6 +103,7 @@ export default {
             title: "הודעה",
             message: "רשומה נוצרה בהצלחה"
           });
+          this.$router.push("/adminListSchoolAccounts");
         })
         .catch(error => {
           this.errorHandler(error);
@@ -118,7 +119,6 @@ export default {
         });
 
         this.$axios.get("/apiV1/get_schools").then(response => {
-          console.log(response);
           this.allSchools = response.data.map(p => {
             return { val: p._id, label: `${p.schoolName} - ${p.city}` };
           });

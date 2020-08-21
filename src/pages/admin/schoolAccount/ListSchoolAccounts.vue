@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: "List Schools",
+  name: "ListSchoolAccounts",
   data() {
     return {
       schoolAccounts: []

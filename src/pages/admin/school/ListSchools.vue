@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "List Schools",
+  name: "ListSchools",
   data() {
     return {
       schools: []

@@ -10,7 +10,7 @@ const routes = [
     ]
   },
   {
-    path: "teachersLogin",
+    path: "/teachersLogin",
     component: () => import("layouts/TeacherLayout.vue"),
     children: [
       { path: "", component: () => import("pages/teachers/TeacherLogin.vue") }
@@ -128,6 +128,10 @@ const routes = [
     path: "/menu",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/Menu.vue") }]
+  },
+  {
+    path: "/pageNotFound",
+    component: () => import("pages/Error404.vue")
   },
   {
     path: "/:compositionId",
